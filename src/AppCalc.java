@@ -1,5 +1,5 @@
-import javax.swing.*;
 import java.awt.*;
+import javax.swing.*;
 
 public class AppCalc {
 
@@ -10,16 +10,6 @@ public class AppCalc {
     public static int subtracao(int a, int b) {
         return a - b;
     }
-    
-    public static int multiplicacao(int a, int b) {
-        return a * b;
-    }
-
-    public static double divisao(int a, int b) {
-        if (b == 0) throw new IllegalArgumentException("Divisão por zero não permitida!");
-        return (double) a / b;
-    }
-
 
     public static void main(String[] args) {
         UIManager.put("OptionPane.messageFont", new Font("Arial", Font.PLAIN, 16));
@@ -31,7 +21,8 @@ public class AppCalc {
         JTextField campoA = new JTextField();
         JTextField campoB = new JTextField();
 
-        String[] operacoes = {"Divisão", "Multiplicação"}; // Coloca as operações aqui.
+        String[] operacoes = {"Soma", "Subtração", "Divisão", "Multiplicação"};
+      
         JComboBox<String> comboOperacao = new JComboBox<>(operacoes);
 
         painel.add(new JLabel("Digite o primeiro número:"));
@@ -46,7 +37,7 @@ public class AppCalc {
         JOptionPane.showMessageDialog(
             null,
             painel,
-            "Calculadora",
+            "Adição e Subtração",
             JOptionPane.PLAIN_MESSAGE
         );
 
@@ -55,9 +46,13 @@ public class AppCalc {
             int b = Integer.parseInt(campoB.getText());
 
             int resultado = 0;
-            String operacao = (String) comboOperacao.getSelectedItem(); // Adiciona os if elses aqui
+            String operacao = (String) comboOperacao.getSelectedItem();
 
-            if (operacao.equals("Divisão")) {
+            if (operacao.equals("Soma")) {
+                resultado = soma(a, b);
+            } else if (operacao.equals("Subtração")) {
+                resultado = subtracao(a, b);
+            } else if (operacao.equals("Divisão")) {
                 resultado = (int) divisao(a, b);
             } else if (operacao.equals("Multiplicação")) {
                 resultado = multiplicacao(a, b);
