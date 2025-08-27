@@ -21,7 +21,8 @@ public class AppCalc {
         JTextField campoA = new JTextField();
         JTextField campoB = new JTextField();
 
-        String[] operacoes = {"Soma", "Subtração"};
+        String[] operacoes = {"Soma", "Subtração", "Divisão", "Multiplicação"};
+      
         JComboBox<String> comboOperacao = new JComboBox<>(operacoes);
 
         painel.add(new JLabel("Digite o primeiro número:"));
@@ -51,7 +52,13 @@ public class AppCalc {
                 resultado = soma(a, b);
             } else if (operacao.equals("Subtração")) {
                 resultado = subtracao(a, b);
+            } else if (operacao.equals("Divisão")) {
+                resultado = (int) divisao(a, b);
+            } else if (operacao.equals("Multiplicação")) {
+                resultado = multiplicacao(a, b);
             };
+                
+
 
             JOptionPane.showMessageDialog(
                 null,
