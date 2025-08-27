@@ -31,7 +31,7 @@ public class AppCalc {
         JTextField campoA = new JTextField();
         JTextField campoB = new JTextField();
 
-        String[] operacoes = {}; // Coloca as operações aqui.
+        String[] operacoes = {"Divisão", "Multiplicação"}; // Coloca as operações aqui.
         JComboBox<String> comboOperacao = new JComboBox<>(operacoes);
 
         painel.add(new JLabel("Digite o primeiro número:"));
@@ -56,6 +56,14 @@ public class AppCalc {
 
             int resultado = 0;
             String operacao = (String) comboOperacao.getSelectedItem(); // Adiciona os if elses aqui
+
+            if (operacao.equals("Divisão")) {
+                resultado = (int) divisao(a, b);
+            } else if (operacao.equals("Multiplicação")) {
+                resultado = multiplicacao(a, b);
+            };
+                
+
 
             JOptionPane.showMessageDialog(
                 null,
